@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chaya's Beauty Hub | Premium Salon in Mathikere, Bengaluru</title>
+<meta name="description" content="Chaya's Beauty Hub — premium skin, hair, makeup and nail studio in Mathikere, Bengaluru. Bridal makeup, hydra facials, nail extensions and beauty masterclasses.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%230a0709' stroke='%23c9a13f' stroke-width='4'/%3E%3Ctext x='50' y='66' font-family='Georgia,serif' font-size='52' fill='%23c9a13f' text-anchor='middle'%3EC%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+    /* ============ Tokens ============ */
+    :root{
+        --bg:#0a0709;
+        --bg-alt:#130c0f;
+        --bg-elevated:#1c1216;
+        --gold:#c9a13f;
+        --gold-light:#eccf83;
+        --rose:#c15c78;
+        --rose-deep:#8f3a52;
+        --ivory:#f5efe6;
+        --text-dim:#b0a4a7;
+        --line:rgba(201,161,63,0.22);
+        --font-head:'Playfair Display', Georgia, serif;
+        --font-body:'Poppins', -apple-system, sans-serif;
+        --ease:cubic-bezier(0.16,1,0.3,1);
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{
+        background:var(--bg);
+        color:var(--ivory);
+        font-family:var(--font-body);
+        font-weight:300;
+        overflow-x:hidden;
+        line-height:1.7;
+        position:relative;
+    }
+
+    /* subtle film-grain texture for a boutique, non-flat feel */
+    body::before{
+        content:'';
+        position:fixed; inset:0;
+        z-index:2;
+        pointer-events:none;
+        opacity:0.035;
+        background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    ::selection{background:var(--gold); color:var(--bg);}
+    a{color:inherit;}
+    img{max-width:100%; display:block;}
+    button{font-family:inherit; cursor:pointer;}
+
+    :focus-visible{outline:2px solid var(--gold); outline-offset:3px;}
+
+    .wrap{max-width:1240px; margin:0 auto; padding:0 6%;}
+
+    @media (prefers-reduced-motion: reduce){
+        *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+    }
+
+    /* ============ Reveal utility (used sparingly) ============ */
+    .reveal{opacity:0; transform:translateY(28px); transition:opacity 0.9s var(--ease), transform 0.9s var(--ease);}
+    .reveal.in{opacity:1; transform:translateY(0);}
+    .reveal.d1{transition-delay:.1s;} .reveal.d2{transition-delay:.2s;} .reveal.d3{transition-delay:.3s;} .reveal.d4{transition-delay:.4s;}
+
+    /* ============ Navigation ============ */
+    header.site-nav{
+        position:fixed; top:0; left:0; width:100%;
+        z-index:1000;
+        padding:22px 6%;
+        display:flex; align-items:center; justify-content:space-between;
+        background:transparent;
+        transition:background 0.5s var(--ease), padding 0.5s var(--ease), border-color 0.5s var(--ease);
+        border-bottom:1px solid transparent;
+    }
+    header.site-nav.scrolled{
+        background:rgba(9,6,7,0.88);
+        backdrop-filter:blur(14px);
+        -webkit-backdrop-filter:blur(14px);
+        padding:14px 6%;
+        border-bottom-color:var(--line);
+    }
+
+    .brand{display:flex; align-items:baseline; gap:10px;}
+    .brand .mark{
+        width:38px; height:38px; border-radius:50%;
+        border:1px solid var(--gold);
+        display:flex; align-items:center; justify-content:center;
+        font-family:var(--font-head); color:var(--gold); font-size:1.1rem;
+        flex-shrink:0;
+    }
+    .brand-text h1{font-family:var(--font-head); font-size:1.4rem; font-weight:600; letter-spacing:0.5px; line-height:1;}
+    .brand-text span{display:block; font-size:0.66rem; color:var(--rose); letter-spacing:2.5px; margin-top:4px;}
+
+    nav.links{display:flex; align-items:center; gap:2.4rem;}
+    nav.links a{
+        text-decoration:none; font-size:0.92rem; letter-spacing:0.3px;
+        position:relative; padding-bottom:4px;
+    }
+    nav.links a::after{
+        content:''; position:absolute; left:0; bottom:0; height:1px; width:0;
+        background:var(--gold); transition:width 0.4s var(--ease);
+    }
+    nav.links a:hover::after{width:100%;}
+    nav.links a:hover{color:var(--gold-light);}
+
+    .nav-cta{
+        border:1px solid var(--gold); color:var(--gold);
+        padding:9px 22px; border-radius:30px; font-size:0.85rem;
+        text-decoration:none; transition:all 0.4s var(--ease);
+    }
+    .nav-cta:hover{background:var(--gold); color:var(--bg);}
+
+    .hamburger{
+        display:none; flex-direction:column; justify-content:center; gap:5px;
+        width:38px; height:38px; background:none; border:none; z-index:1100;
+    }
+    .hamburger span{width:100%; height:1.5px; background:var(--ivory); transition:transform 0.35s var(--ease), opacity 0.3s;}
+    .hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+    .hamburger.open span:nth-child(2){opacity:0;}
+    .hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+
+    .mobile-panel{
+        position:fixed; top:0; right:0; height:100vh; width:min(78vw,320px);
+        background:#0d0709; border-left:1px solid var(--line);
+        z-index:1050; padding:110px 40px 40px;
+        display:flex; flex-direction:column; gap:1.8rem;
+        transform:translateX(100%); transition:transform 0.5s var(--ease);
+    }
+    .mobile-panel.open{transform:translateX(0);}
+    .mobile-panel a{text-decoration:none; font-family:var(--font-head); font-size:1.4rem; color:var(--ivory);}
+    .mobile-panel a:hover{color:var(--gold);}
+    .scrim{position:fixed; inset:0; background:rgba(0,0,0,0.55); z-index:1040; opacity:0; pointer-events:none; transition:opacity 0.4s;}
+    .scrim.open{opacity:1; pointer-events:auto;}
+
+    @media (max-width:860px){
+        nav.links, .nav-cta{display:none;}
+        .hamburger{display:flex;}
+    }
+
+    /* ============ Hero ============ */
+    .hero{
+        min-height:100vh;
+        display:flex; align-items:center;
+        padding:150px 6% 90px;
+        position:relative;
+        background:
+            radial-gradient(ellipse 70% 50% at 85% 15%, rgba(193,92,120,0.3), transparent 60%),
+            radial-gradient(ellipse 60% 60% at 10% 90%, rgba(201,161,63,0.3), transparent 60%),
+            linear-gradient(rgba(10, 7, 9, 0.8), rgba(10, 7, 9, 0.95)),
+            url('storefront.png');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        overflow:hidden;
+    }
+    .hero-grid{
+        max-width:1240px; margin:0 auto; width:100%;
+        display:grid; grid-template-columns:1.1fr 0.9fr; gap:3rem; align-items:center;
+    }
+
+    .hero-copy .tag{
+        display:inline-flex; align-items:center; gap:10px;
+        border:1px solid var(--line); border-radius:30px; padding:7px 18px 7px 8px;
+        font-size:0.8rem; color:var(--text-dim); margin-bottom:28px;
+    }
+    .hero-copy .tag .dot{width:8px; height:8px; border-radius:50%; background:var(--gold); box-shadow:0 0 10px var(--gold); flex-shrink:0;}
+
+    .hero-copy h2{
+        font-family:var(--font-head);
+        font-weight:600;
+        font-size:clamp(2.6rem, 5.6vw, 4.4rem);
+        line-height:1.06;
+        letter-spacing:-0.5px;
+    }
+    .hero-copy h2 em{color:var(--gold); font-style:italic; font-weight:500;}
+
+    .hero-copy p.sub{
+        margin-top:22px; max-width:46ch;
+        font-size:1.08rem; color:var(--text-dim); font-weight:300;
+    }
+
+    .hero-actions{display:flex; flex-wrap:wrap; gap:16px; margin-top:38px;}
+
+    .btn{
+        display:inline-flex; align-items:center; gap:10px;
+        padding:15px 32px; border-radius:32px;
+        text-decoration:none; font-size:0.92rem; font-weight:500;
+        transition:transform 0.4s var(--ease), box-shadow 0.4s var(--ease), background 0.4s;
+    }
+    .btn-primary{background:linear-gradient(135deg, var(--gold-light), var(--gold)); color:#241a08;}
+    .btn-primary:hover{transform:translateY(-3px); box-shadow:0 14px 30px -10px rgba(201,161,63,0.55);}
+    .btn-ghost{border:1px solid var(--line); color:var(--ivory);}
+    .btn-ghost:hover{border-color:var(--gold); color:var(--gold-light); transform:translateY(-3px);}
+
+    .hero-meta{
+        margin-top:46px; display:flex; gap:2.2rem; flex-wrap:wrap;
+        border-top:1px solid var(--line); padding-top:22px; max-width:520px;
+    }
+    .hero-meta div{font-size:0.85rem; color:var(--text-dim);}
+    .hero-meta strong{display:block; color:var(--ivory); font-family:var(--font-head); font-size:1rem; font-weight:500; margin-bottom:2px;}
+
+    /* hero illustration */
+    .hero-art{position:relative; display:flex; align-items:center; justify-content:center;}
+    .hero-art svg{width:100%; max-width:380px; height:auto; overflow:visible;}
+    .art-line{
+        fill:none; stroke:var(--gold); stroke-width:1.6; stroke-linecap:round; stroke-linejoin:round;
+        stroke-dasharray:1000; stroke-dashoffset:1000;
+        animation:draw 2.6s var(--ease) forwards;
+    }
+    .art-line.delay{animation-delay:0.4s;}
+    .art-line.delay2{animation-delay:0.8s;}
+    @keyframes draw{to{stroke-dashoffset:0;}}
+    .sparkle{opacity:0; transform-origin:center; animation:twinkle 2.6s ease-in-out infinite;}
+    .sparkle.s1{animation-delay:2.4s;} .sparkle.s2{animation-delay:2.9s;} .sparkle.s3{animation-delay:3.3s;} .sparkle.s4{animation-delay:3.7s;}
+    @keyframes twinkle{
+        0%,100%{opacity:0; transform:scale(0.5);}
+        50%{opacity:1; transform:scale(1);}
+    }
+
+    @media (max-width:960px){
+        .hero-grid{grid-template-columns:1fr; text-align:left;}
+        .hero-art{order:-1; margin-bottom:10px;}
+        .hero-art svg{max-width:220px;}
+    }
+
+    /* ============ Marquee ============ */
+    .marquee-strip{
+        background:var(--bg-alt);
+        border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+        padding:18px 0; overflow:hidden; white-space:nowrap;
+    }
+    .marquee-track{display:inline-flex; animation:scroll-x 32s linear infinite;}
+    .marquee-strip:hover .marquee-track{animation-play-state:paused;}
+    .marquee-track span{
+        font-family:var(--font-head); font-style:italic; font-size:1.15rem;
+        color:var(--text-dim); padding:0 2.4rem; display:inline-flex; align-items:center; gap:2.4rem;
+    }
+    .marquee-track span::after{content:'✦'; color:var(--gold); font-style:normal; font-size:0.8rem;}
+    @keyframes scroll-x{from{transform:translateX(0);} to{transform:translateX(-50%);}}
+
+    /* ============ Info banner ============ */
+    .info-section{padding:70px 6%; background:var(--bg);}
+    .info-cards{
+        max-width:1100px; margin:0 auto;
+        display:grid; grid-template-columns:1.3fr 1fr; gap:1.5rem;
+    }
+    .info-card{
+        background:var(--bg-alt); border:1px solid var(--line); border-radius:18px;
+        padding:2.2rem 2.4rem; display:flex; flex-direction:column; gap:14px;
+        transition:border-color 0.4s, transform 0.4s var(--ease);
+    }
+    .info-card:hover{border-color:var(--gold); transform:translateY(-4px);}
+    .info-card .icn{width:34px; height:34px; color:var(--gold);}
+    .info-card h4{font-family:var(--font-head); font-size:1.15rem; font-weight:600;}
+    .info-card p{color:var(--text-dim); font-size:0.95rem;}
+    .map-btn{
+        align-self:flex-start; display:inline-flex; align-items:center; gap:9px;
+        margin-top:6px; padding:11px 22px; border-radius:24px; text-decoration:none;
+        background:linear-gradient(135deg, var(--gold-light), var(--gold)); color:#241a08;
+        font-size:0.85rem; font-weight:500; box-shadow:0 0 0 rgba(201,161,63,0.5);
+        animation:pulse-btn 2.4s infinite;
+    }
+    .map-btn:hover{animation:none; transform:scale(1.04);}
+    @keyframes pulse-btn{
+        0%{box-shadow:0 0 0 0 rgba(201,161,63,0.45);}
+        70%{box-shadow:0 0 0 14px rgba(201,161,63,0);}
+        100%{box-shadow:0 0 0 0 rgba(201,161,63,0);}
+    }
+    @media (max-width:760px){.info-cards{grid-template-columns:1fr;}}
+
+    /* ============ Section heading (signature flourish, no eyebrow) ============ */
+    .section-pad{padding:6rem 6%;}
+    .section-head{max-width:640px; margin:0 auto 3.6rem; text-align:center;}
+    .section-head h2{
+        font-family:var(--font-head); font-weight:600;
+        font-size:clamp(2.1rem, 3.6vw, 2.9rem);
+    }
+    .flourish{
+        display:flex; align-items:center; justify-content:center; gap:14px;
+        margin:18px 0 14px;
+    }
+    .flourish .ln{width:44px; height:1px; background:linear-gradient(90deg, transparent, var(--gold));}
+    .flourish .ln.r{background:linear-gradient(90deg, var(--gold), transparent);}
+    .flourish .dot{width:5px; height:5px; border-radius:50%; background:var(--gold);}
+    .section-head .subline{font-family:var(--font-head); font-style:italic; color:var(--rose); font-size:1.05rem; font-weight:500;}
+
+    /* ============ Services ============ */
+    .services-grid{
+        max-width:1180px; margin:0 auto;
+        display:grid; grid-template-columns:repeat(auto-fit,minmax(310px,1fr)); gap:1.8rem;
+    }
+    .service-card{
+        background:var(--bg-alt); border:1px solid var(--line); border-radius:20px;
+        padding:2.6rem 2.2rem; transition:transform 0.5s var(--ease), border-color 0.5s, box-shadow 0.5s;
+        position:relative; overflow:hidden;
+    }
+    .service-card::before{
+        content:''; position:absolute; top:-40%; right:-40%; width:80%; height:80%; border-radius:50%;
+        background:radial-gradient(circle, rgba(201,161,63,0.12), transparent 70%);
+        opacity:0; transition:opacity 0.5s;
+    }
+    .service-card:hover{transform:translateY(-10px); border-color:var(--gold); box-shadow:0 24px 48px -20px rgba(0,0,0,0.7);}
+    .service-card:hover::before{opacity:1;}
+    .service-card .icn-wrap{
+        width:56px; height:56px; border-radius:50%; border:1px solid var(--line);
+        display:flex; align-items:center; justify-content:center; margin-bottom:1.6rem;
+        color:var(--gold); position:relative; z-index:1;
+    }
+    .service-card .icn-wrap svg{width:26px; height:26px;}
+    .service-card h3{font-family:var(--font-head); font-size:1.5rem; font-weight:600; margin-bottom:1.2rem; position:relative; z-index:1;}
+    .service-list{list-style:none; position:relative; z-index:1;}
+    .service-list li{
+        padding:10px 0; color:var(--text-dim); font-size:0.95rem;
+        border-bottom:1px solid rgba(255,255,255,0.05);
+        display:flex; align-items:center; gap:10px;
+    }
+    .service-list li:last-child{border-bottom:none;}
+    .service-list li svg{width:13px; height:13px; color:var(--gold); flex-shrink:0;}
+
+    /* ============ Why choose us ============ */
+    .why-section{background:var(--bg-alt); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+    .why-grid{
+        max-width:1180px; margin:0 auto;
+        display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:2.6rem;
+    }
+    .why-item{text-align:center;}
+    .why-item .icn-wrap{
+        width:60px; height:60px; margin:0 auto 1.2rem; border-radius:50%;
+        border:1px solid var(--line); display:flex; align-items:center; justify-content:center; color:var(--rose);
+        transition:border-color 0.4s, color 0.4s;
+    }
+    .why-item:hover .icn-wrap{border-color:var(--rose); color:var(--gold-light);}
+    .why-item .icn-wrap svg{width:26px; height:26px;}
+    .why-item h4{font-family:var(--font-head); font-size:1.1rem; font-weight:600; margin-bottom:8px;}
+    .why-item p{font-size:0.88rem; color:var(--text-dim);}
+
+    /* ============ Masterclasses ============ */
+    .posters-grid{
+        max-width:1240px; margin:0 auto;
+        display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:2rem;
+    }
+    .poster-card{
+        background:var(--bg-alt); border-radius:20px; overflow:hidden;
+        border:1px solid var(--line); transition:transform 0.5s var(--ease), box-shadow 0.5s;
+        position:relative;
+    }
+    .poster-card:hover{transform:translateY(-8px) scale(1.015); box-shadow:0 26px 50px -22px rgba(0,0,0,0.8); border-color:var(--gold);}
+    .poster-media{
+        aspect-ratio:4/3; width:100%; position:relative; overflow:hidden;
+        background:linear-gradient(135deg, #241a1e, #150d10);
+    }
+    .poster-media img{width:100%; height:100%; object-fit:cover; transition:transform 0.7s var(--ease);}
+    .poster-card:hover .poster-media img{transform:scale(1.08);}
+    .poster-fallback{
+        position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+        background:
+            radial-gradient(circle at 30% 20%, rgba(201,161,63,0.18), transparent 55%),
+            radial-gradient(circle at 80% 80%, rgba(193,92,120,0.18), transparent 55%),
+            var(--bg-elevated);
+    }
+    .poster-fallback svg{width:52px; height:52px; color:var(--gold); opacity:0.85;}
+    .poster-info{padding:1.8rem 1.7rem;}
+    .poster-info h3{font-family:var(--font-head); font-size:1.25rem; font-weight:600; margin-bottom:8px;}
+    .poster-info p{color:var(--text-dim); font-size:0.9rem;}
+
+    /* ============ CTA banner ============ */
+    .cta-banner{
+        margin:6rem 6% 0; padding:4rem 3rem; border-radius:28px;
+        background:linear-gradient(135deg, rgba(201,161,63,0.14), rgba(193,92,120,0.1));
+        border:1px solid var(--line);
+        text-align:center;
+    }
+    .cta-banner h2{font-family:var(--font-head); font-size:clamp(1.8rem,3.6vw,2.6rem); font-weight:600; margin-bottom:14px;}
+    .cta-banner p{color:var(--text-dim); max-width:50ch; margin:0 auto 2rem;}
+
+    /* ============ Footer ============ */
+    footer{background:#050304; padding:6rem 6% 2.4rem; text-align:center; border-top:1px solid var(--line); margin-top:6rem;}
+    .footer-logo h2{font-family:var(--font-head); font-size:2.4rem; font-weight:600; color:var(--gold);}
+    .footer-logo p{color:var(--rose); letter-spacing:2px; font-size:0.85rem; margin-top:6px; margin-bottom:3rem;}
+    .contact-highlight{
+        display:inline-flex; align-items:center; gap:16px;
+        background:rgba(201,161,63,0.08); border:1px solid var(--gold);
+        padding:1.3rem 2.6rem; border-radius:50px; margin-bottom:2.6rem;
+        transition:transform 0.4s var(--ease), background 0.4s;
+    }
+    .contact-highlight:hover{background:rgba(201,161,63,0.16); transform:translateY(-4px);}
+    .contact-highlight svg{width:26px; height:26px; color:var(--gold);}
+    .contact-highlight .txt{text-align:left;}
+    .contact-highlight span{display:block; color:var(--text-dim); font-size:0.75rem; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:3px;}
+    .contact-highlight a{font-size:1.7rem; font-weight:600; text-decoration:none; color:var(--gold); font-family:var(--font-head);}
+    .footer-links{display:flex; justify-content:center; gap:2.2rem; flex-wrap:wrap; margin-bottom:2.6rem;}
+    .footer-links a{text-decoration:none; font-size:0.9rem; color:var(--text-dim); transition:color 0.3s;}
+    .footer-links a:hover{color:var(--gold);}
+    .gst{color:#5c5457; font-size:0.8rem; margin-bottom:2rem;}
+    .copyright{color:#4a4547; font-size:0.85rem; border-top:1px solid #1a1315; padding-top:2rem;}
+
+    /* ============ Floating WhatsApp ============ */
+    .float-wa{
+        position:fixed; right:24px; bottom:24px; z-index:900;
+        width:58px; height:58px; border-radius:50%;
+        background:linear-gradient(135deg, var(--gold-light), var(--gold));
+        display:flex; align-items:center; justify-content:center;
+        text-decoration:none; box-shadow:0 12px 28px -8px rgba(201,161,63,0.6);
+        transform:translateY(120px) scale(0.7); opacity:0;
+        transition:transform 0.5s var(--ease), opacity 0.5s, box-shadow 0.4s;
+    }
+    .float-wa.show{transform:translateY(0) scale(1); opacity:1;}
+    .float-wa:hover{box-shadow:0 16px 34px -6px rgba(201,161,63,0.75);}
+    .float-wa svg{width:27px; height:27px; color:#241a08;}
+
+    @media (max-width:600px){
+        .section-pad{padding:4.4rem 6%;}
+        .cta-banner{padding:3rem 1.6rem; margin-top:4rem;}
+        .contact-highlight{flex-direction:column; text-align:center; gap:8px; padding:1.6rem 2.2rem;}
+        .contact-highlight .txt{text-align:center;}
+    }
+</style>
+</head>
+<body>
+
+<div class="scrim" id="scrim"></div>
+
+<header class="site-nav" id="navbar">
+    <a href="#home" class="brand" style="text-decoration:none;">
+        <span class="mark">C</span>
+        <span class="brand-text">
+            <h1>Chaya's</h1>
+            <span>Beauty Hub</span>
+        </span>
+    </a>
+    <nav class="links">
+        <a href="#services">Services</a>
+        <a href="#why">Studio</a>
+        <a href="#classes">Masterclasses</a>
+        <a href="#contact" class="nav-cta">Book Now</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+    </button>
+</header>
+
+<div class="mobile-panel" id="mobilePanel">
+    <a href="#services">Services</a>
+    <a href="#why">Studio</a>
+    <a href="#classes">Masterclasses</a>
+    <a href="#contact">Book Now</a>
+</div>
+
+<section id="home" class="hero">
+    <div class="hero-grid">
+        <div class="hero-copy">
+            <span class="tag"><span class="dot"></span>Mathikere, Bengaluru</span>
+            <h2>Ready to get<br><em>gorgeous</em>, effortlessly</h2>
+            <p class="sub">A premium skin, hair, makeup and nail studio built around one idea — you should leave feeling like the best version of yourself.</p>
+            <div class="hero-actions">
+                <a href="https://wa.me/917676024871" target="_blank" class="btn btn-primary">Book on WhatsApp</a>
+                <a href="#services" class="btn btn-ghost">Explore Services</a>
+            </div>
+            <div class="hero-meta">
+                <div><strong>11 AM – 3 PM</strong>Morning hours</div>
+                <div><strong>5:30 – 8:30 PM</strong>Evening hours</div>
+                <div><strong>100ft Road</strong>Opp. Chowdeshwari Bus Stop</div>
+            </div>
+        </div>
+        <div class="hero-art">
+            <svg viewBox="0 0 400 480" fill="none">
+                <ellipse class="art-line" cx="200" cy="175" rx="108" ry="138" pathLength="1000"/>
+                <path class="art-line delay" d="M200 313 L200 430" pathLength="1000"/>
+                <path class="art-line delay" d="M155 430 L245 430" pathLength="1000"/>
+                <path class="art-line delay2" d="M70 260 C40 240 30 190 55 160" pathLength="1000"/>
+                <path class="art-line delay2" d="M330 260 C360 240 370 190 345 160" pathLength="1000"/>
+                <path class="art-line delay2" d="M150 105 C170 80 230 80 250 105" pathLength="1000"/>
+                <circle class="sparkle s1" cx="88" cy="110" r="3" fill="#eccf83"/>
+                <circle class="sparkle s2" cx="320" cy="140" r="2.5" fill="#c15c78"/>
+                <circle class="sparkle s3" cx="300" cy="330" r="3" fill="#eccf83"/>
+                <circle class="sparkle s4" cx="95" cy="320" r="2" fill="#c15c78"/>
+            </svg>
+        </div>
+    </div>
+</section>
+
+<div class="marquee-strip">
+    <div class="marquee-track">
+        <span>Hydra Facials</span><span>Bridal Makeup</span><span>Advanced Hair Coloring</span><span>Nail Extensions</span><span>Saree Pre-Pleating</span><span>Spa Treatments</span>
+        <span>Hydra Facials</span><span>Bridal Makeup</span><span>Advanced Hair Coloring</span><span>Nail Extensions</span><span>Saree Pre-Pleating</span><span>Spa Treatments</span>
+    </div>
+</div>
+
+<section class="info-section">
+    <div class="info-cards">
+        <div class="info-card reveal">
+            <svg class="icn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21s-7-6.1-7-11.4A7 7 0 0 1 12 3a7 7 0 0 1 7 6.6C19 14.9 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.4"/></svg>
+            <h4>Find Us</h4>
+            <p>No. 273/D, K.M.T Layout, 100ft Road, Opp. Chowdeshwari Bus Stop, Mathikere, Bengaluru – 560054</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=No.+273%2FD%2C+K.M.T+Layout%2C+100ft+Road%2C+Mathikere%2C+Bengaluru" target="_blank" class="map-btn">📍 View on Google Maps</a>
+        </div>
+        <div class="info-card reveal d1">
+            <svg class="icn" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+            <h4>Store Timings</h4>
+            <p>Morning &nbsp; 11:00 AM – 3:00 PM<br>Evening &nbsp; 5:30 PM – 8:30 PM</p>
+        </div>
+    </div>
+</section>
+
+<section id="services" class="section-pad">
+    <div class="section-head reveal">
+        <h2>Premium services</h2>
+        <div class="flourish"><span class="ln"></span><span class="dot"></span><span class="ln r"></span></div>
+        <p class="subline">across skin, hair, makeup &amp; nails</p>
+    </div>
+    <div class="services-grid">
+        <div class="service-card reveal">
+            <div class="icn-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3c3 3 5 6.5 5 10a5 5 0 0 1-10 0c0-3.5 2-7 5-10z"/></svg></div>
+            <h3>Skin &amp; Hair Care</h3>
+            <ul class="service-list">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Advanced Facials</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Hydra Facial</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Spa Treatments</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Advanced Haircuts</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Professional Hair Coloring</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>All Premium Services</li>
+            </ul>
+        </div>
+        <div class="service-card reveal d1">
+            <div class="icn-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M9 3h6l1 4-4 3-4-3 1-4z"/><path d="M8 10v11M16 10v11"/></svg></div>
+            <h3>Makeup Artistry</h3>
+            <ul class="service-list">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Bridal Makeup</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Water Proof Makeup</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Party &amp; Event Makeup</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Saree Pre Pleating</li>
+            </ul>
+        </div>
+        <div class="service-card reveal d2">
+            <div class="icn-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3c1.7 2 2.5 4 2.5 6.2a2.5 2.5 0 0 1-5 0C9.5 7 10.3 5 12 3z"/><path d="M9 19h6"/></svg></div>
+            <h3>Nail Studio</h3>
+            <ul class="service-list">
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Manicure &amp; Pedicure</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Temporary Extensions</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Gel Extensions</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Acrylic Nail Extensions</li>
+                <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg>Press on Nails</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section id="why" class="why-section section-pad">
+    <div class="section-head reveal">
+        <h2>Why clients choose us</h2>
+        <div class="flourish"><span class="ln"></span><span class="dot"></span><span class="ln r"></span></div>
+        <p class="subline">the details behind the experience</p>
+    </div>
+    <div class="why-grid">
+        <div class="why-item reveal">
+            <div class="icn-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 2.5c3 4 6 7 6 11a6 6 0 0 1-12 0c0-4 3-7 6-11z"/></svg></div>
+            <h4>Premium Products</h4>
+            <p>Quality formulations for skin, hair and nails, used with care.</p>
+        </div>
+        <div class="why-item reveal d1">
+            <div class="icn-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.4"/></svg></div>
+            <h4>Personalized Care</h4>
+            <p>Every visit starts with a consultation, tailored to what you want.</p>
+        </div>
+        <div class="why-item reveal d2">
+            <div class="icn-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="m4 12 5 5L20 6"/></svg></div>
+            <h4>Clean, Sanitized Studio</h4>
+            <p>Tools and stations kept hygienic between every single appointment.</p>
+        </div>
+        <div class="why-item reveal d3">
+            <div class="icn-wrap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 8.6 8.6 0 0 1-3.8-.9L3 20l1-5.6a8.5 8.5 0 1 1 17-2.9z"/></svg></div>
+            <h4>Easy Booking</h4>
+            <p>Just message us on WhatsApp and we'll find a slot that works.</p>
+        </div>
+    </div>
+</section>
+
+<section id="classes" class="section-pad" style="background:var(--bg-alt);">
+    <div class="section-head reveal">
+        <h2>Masterclasses &amp; offers</h2>
+        <div class="flourish"><span class="ln"></span><span class="dot"></span><span class="ln r"></span></div>
+        <p class="subline">learn from the studio, or treat yourself</p>
+    </div>
+    <div class="posters-grid">
+        <div class="poster-card reveal">
+            <div class="poster-media">
+                <img src="saree-class-1.jpeg" alt="Saree Prepleating Class" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="poster-fallback" style="display:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4 4c8 4 8 12 16 16M4 20c8-4 8-12 16-16"/></svg></div>
+            </div>
+            <div class="poster-info">
+                <h3>Saree Prepleating Basics</h3>
+                <p>Drape with style, shine every time.</p>
+            </div>
+        </div>
+        <div class="poster-card reveal d1">
+            <div class="poster-media">
+                <img src="saree-class-2.jpg" alt="Pro Saree Prepleating" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="poster-fallback" style="display:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M4 4c8 4 8 12 16 16M4 20c8-4 8-12 16-16"/></svg></div>
+            </div>
+            <div class="poster-info">
+                <h3>Pro Saree Prepleating</h3>
+                <p>Learn perfect pleating like a pro.</p>
+            </div>
+        </div>
+        <div class="poster-card reveal d2">
+            <div class="poster-media">
+                <img src="makeup-class.jpeg" alt="Self Makeup Class" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="poster-fallback" style="display:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M9 3h6l1 4-4 3-4-3 1-4z"/><path d="M8 10v11M16 10v11"/></svg></div>
+            </div>
+            <div class="poster-info">
+                <h3>Self Makeup Class</h3>
+                <p>Be your own artist. Learn, practice, transform.</p>
+            </div>
+        </div>
+        <div class="poster-card reveal d3">
+            <div class="poster-media">
+                <img src="festival-offer.jpeg" alt="Festival Offer" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="poster-fallback" style="display:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M12 2.5c3 4 6 7 6 11a6 6 0 0 1-12 0c0-4 3-7 6-11z"/></svg></div>
+            </div>
+            <div class="poster-info">
+                <h3>Festival Combo Offer</h3>
+                <p>Take any 3 premium services.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="cta-banner reveal">
+        <h2>Ready to get gorgeous?</h2>
+        <p>Message us on WhatsApp and we'll help you pick the right service and a time that suits you.</p>
+        <a href="https://wa.me/917676024871" target="_blank" class="btn btn-primary">Book on WhatsApp</a>
+    </div>
+</section>
+
+<footer id="contact">
+    <div class="footer-logo reveal">
+        <h2>ಛಾಯಾ'ಸ್ ಬ್ಯೂಟಿ ಹಬ್</h2>
+        <p>CHAYA'S BEAUTY HUB</p>
+    </div>
+
+    <div class="reveal d1">
+        <div class="contact-highlight">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11 11 0 0 0 3.6 17.2L2 22l4.9-1.6a11 11 0 0 0 15.6-16.9zM12 20a8 8 0 0 1-4.1-1.1l-.3-.2-3 1 1-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.4-.7-1.7-.8s-.4-.1-.6.1-.7.8-.9 1-.3.2-.6.1a6.6 6.6 0 0 1-3.3-2.9c-.2-.4.2-.4.6-1.3.1-.2 0-.4 0-.5s-.6-1.5-.9-2-.5-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-1 2.3c0 1.3 1 2.6 1.1 2.8s2 3 4.7 4.2a5.5 5.5 0 0 0 3.4.7 2.9 2.9 0 0 0 1.9-1.3c.2-.4.2-.7.2-.8s-.2-.2-.4-.3z"/></svg>
+            <div class="txt">
+                <span>Bookings &amp; Enquiries</span>
+                <a href="https://wa.me/917676024871" target="_blank">7676024871</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-links reveal d2">
+        <a href="#services">Services</a>
+        <a href="#why">Studio</a>
+        <a href="#classes">Masterclasses</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=No.+273%2FD%2C+K.M.T+Layout%2C+100ft+Road%2C+Mathikere%2C+Bengaluru" target="_blank">Directions</a>
+    </div>
+
+    <p class="gst reveal d3">GSTIN : 29BDHPC2433J1Z2</p>
+    <div class="copyright reveal d3">
+        <p>&copy; 2026 Chaya's Beauty Hub. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<a href="https://wa.me/917676024871" target="_blank" class="float-wa" id="floatWa" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3.5A11 11 0 0 0 3.6 17.2L2 22l4.9-1.6a11 11 0 0 0 15.6-16.9zM12 20a8 8 0 0 1-4.1-1.1l-.3-.2-3 1 1-2.9-.2-.3A8 8 0 1 1 12 20zm4.4-5.9c-.2-.1-1.4-.7-1.7-.8s-.4-.1-.6.1-.7.8-.9 1-.3.2-.6.1a6.6 6.6 0 0 1-3.3-2.9c-.2-.4.2-.4.6-1.3.1-.2 0-.4 0-.5s-.6-1.5-.9-2-.5-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-1 2.3c0 1.3 1 2.6 1.1 2.8s2 3 4.7 4.2a5.5 5.5 0 0 0 3.4.7 2.9 2.9 0 0 0 1.9-1.3c.2-.4.2-.7.2-.8s-.2-.2-.4-.3z"/></svg>
+</a>
+
+<script>
+(function(){
+    const navbar = document.getElementById('navbar');
+    const floatWa = document.getElementById('floatWa');
+    window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY > 60;
+        navbar.classList.toggle('scrolled', scrolled);
+        floatWa.classList.toggle('show', window.scrollY > 400);
+    });
+
+    const hamburger = document.getElementById('hamburger');
+    const panel = document.getElementById('mobilePanel');
+    const scrim = document.getElementById('scrim');
+    function closeMenu(){
+        hamburger.classList.remove('open');
+        panel.classList.remove('open');
+        scrim.classList.remove('open');
+    }
+    hamburger.addEventListener('click', () => {
+        const willOpen = !panel.classList.contains('open');
+        hamburger.classList.toggle('open', willOpen);
+        panel.classList.toggle('open', willOpen);
+        scrim.classList.toggle('open', willOpen);
+    });
+    scrim.addEventListener('click', closeMenu);
+    panel.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting){
+                entry.target.classList.add('in');
+                io.unobserve(entry.target);
+            }
+        });
+    }, {threshold:0.15, rootMargin:'0px 0px -60px 0px'});
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+})();
+</script>
+</body>
+</html>
